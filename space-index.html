@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shuttle Game</title>
+    <style>
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #000014, #093744);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+
+        h1 {
+            font-size: 4em;
+            font-weight: bold;
+            color: #e0e0e0;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 45px rgba(255, 255, 255, 0.8);
+            animation: glow 1.5s infinite alternate;
+        }
+
+
+        .button {
+            padding: 12px 30px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        .button:focus {
+            outline: none;
+        }
+
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.8), 0 0 45px rgba(255, 255, 255, 0.8);
+            }
+            100% {
+                text-shadow: 0 0 25px rgba(255, 255, 255, 1), 0 0 50px rgba(255, 255, 255, 1), 0 0 75px rgba(255, 255, 255, 1);
+            }
+        }
+
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background-color: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: twinkle 2s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 0.8;
+            }
+            100% {
+                opacity: 0.2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="home">
+        <h1>Welcome to WW3: The Battle of the Multiverse</h1>
+        <button class="button" onclick="startGame()">Play</button>
+    </div>
+
+
+    <div class="stars"></div>
+
+    <script>
+
+        function createStars() {
+            const starField = document.querySelector('.stars');
+            for (let i = 0; i < 300; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                star.style.top = `${Math.random() * 100}%`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.animationDuration = `${Math.random() * 2 + 1}s`;
+                starField.appendChild(star);
+            }
+        }
+
+
+        createStars();
+
+
+        function startGame() {
+            window.location.href = "instructions.html";
+        }
+    </script>
+</body>
+</html>
